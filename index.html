@@ -150,7 +150,7 @@
     .status { color: #606a83; margin: 18px 0 0; }
     .board-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
     h2 { font-size: 1.2rem; margin: 0 0 16px; }
-    .hint { margin: 0 0 16px; color: #606a83; font-size: .9rem; }
+    .hint { margin: 0 0 16px; color: #606a83; font-size: .9rem; display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
     .board { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 6px; }
     .cell {
       display: flex;
@@ -279,10 +279,9 @@
         <p id="status" class="status" aria-live="polite">已抽出 0 個，剩下 98 個</p>
       </section>
       <section class="card" aria-label="號碼表">
-        <span class="corner-ornament" aria-hidden="true">🔔</span>
         <div class="board-heading">
           <h2>🎄 聖誕號碼表</h2>
-          <p class="hint">紅色代表已抽出</p>
+          <p class="hint"><span aria-hidden="true">🔔</span>紅色代表已抽出</p>
         </div>
         <div id="board" class="board"></div>
         <p class="board-footer" aria-hidden="true">✦ ❄ ✦ 🎄 ✦ ❄ ✦</p>
