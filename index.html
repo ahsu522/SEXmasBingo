@@ -130,13 +130,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 180px;
+      height: 200px;
+      min-height: 200px;
+      flex: 0 0 200px;
       color: #d71920;
       font-size: clamp(6rem, 18vw, 10rem);
       font-weight: 800;
       line-height: 1;
     }
-    .actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 42px; }
+    .actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
     button {
       border: 0;
       border-radius: 12px;
@@ -153,7 +155,9 @@
     #reset { background: #e9edf7; color: #34446f; }
     #reset:hover { background: #dce3f2; }
     .status { color: #606a83; margin: 18px 0 0; }
-    .board-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
+    .board-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-top: 85px; }
+    /* Visually center the board content without changing either card's height. */
+    .board-card > * { position: relative; top: 10px; }
     h2 { font-size: 1.2rem; margin: 0 0 16px; }
     .hint { margin: 0 0 16px; color: #606a83; font-size: .9rem; display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
     .board { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 6px; }
@@ -224,15 +228,18 @@
       text-shadow: 0 2px 0 #fff0c2, 2px 5px 0 #e9c477, 4px 8px 0 #a97037,
                    0 12px 14px #57372655, 0 0 22px #f7d98477;
     }
-    .number.is-empty { text-shadow: none; }
+    .number.is-empty { position: relative; text-shadow: none; }
     .number .mistletoe-bells {
       display: block;
-      width: min(242px, 59.4%);
-      max-height: 220px;
+      position: absolute;
+      left: 50%;
+      bottom: 6px;
+      width: min(198px, 59.4%);
+      max-height: 190px;
       object-fit: contain;
+      transform: translateX(-50%);
       filter: drop-shadow(0 7px 9px #734e282a);
     }
-    .draw-area:has(.number.is-empty) .actions { margin-top: 14px; }
     #draw {
       background:
         linear-gradient(180deg, #f86a73 0%, #d52b3c 26%, #aa172a 100%) padding-box,
@@ -282,7 +289,6 @@
       .board { gap: 5px; }
       .cell { aspect-ratio: auto; height: clamp(31px, 4.7vh, 52px); }
       .board-footer { margin-top: 9px; }
-      .number { min-height: 145px; }
     }
     /* Fit the entire 98-number board on shorter desktop/projector viewports at 100% zoom. */
     @media (min-width: 1050px) and (max-height: 820px) {
@@ -298,6 +304,7 @@
       .holiday-character .character-image { height: 176px; width: 178px; }
       .game-layout { margin-top: 0; }
       .card { padding: 10px 18px; }
+      .board-heading { margin-top: 14px; }
       .board-heading h2, .board-heading .hint { margin-bottom: 6px; }
       .board { gap: 3px; }
       .cell { height: clamp(25px, 4vh, 41px); }
@@ -312,6 +319,7 @@
       .holiday-character .character-image { width: 160px; height: 185px; }
     }
     @media (max-width: 700px) {
+      .board-heading { margin-top: 14px; }
       .holiday-header { min-height: 0; padding: 56px 80px 12px; }
       .game-layout { grid-template-columns: 1fr; }
       .actions { margin-top: 30px; }
@@ -347,7 +355,7 @@
       <span class="header-wreath" aria-hidden="true">🎀🎄🎀</span>
       <p class="holiday-kicker">✦ THE MOST WONDERFUL TIME OF THE YEAR ✦</p>
       <h1 class="christmas-title"><span class="title-star" aria-hidden="true">✦</span>2026 SE <span class="title-gold">X'mas</span> BINGO<span class="title-star" aria-hidden="true">✦</span></h1>
-      <p class="subtitle">🎅 歡樂聖誕抽號時間！1 至 98 號，每個號碼只會抽出一次 🎅</p>
+      <p class="subtitle">🎄 Let the Xmas Magic Begin！1–98 號隨機開抽，幸運不重複！ ✨</p>
       <div class="holiday-divider" aria-hidden="true">❄ ✦ ❄ ✦ ❄</div>
     </header>
     <div class="christmas-parade" aria-hidden="true">
@@ -366,7 +374,7 @@
         </div>
         <p id="status" class="status" aria-live="polite">已抽出 0 個，剩下 98 個</p>
       </section>
-      <section class="card" aria-label="號碼表">
+      <section class="card board-card" aria-label="號碼表">
         <div class="board-heading">
           <h2>🎄 聖誕號碼表</h2>
           <p class="hint"><span aria-hidden="true">🔔</span>紅色代表已抽出</p>
