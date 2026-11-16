@@ -153,7 +153,7 @@
     #reset { background: #e9edf7; color: #34446f; }
     #reset:hover { background: #dce3f2; }
     .status { color: #606a83; margin: 18px 0 0; }
-    .board-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+    .board-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
     h2 { font-size: 1.2rem; margin: 0 0 16px; }
     .hint { margin: 0 0 16px; color: #606a83; font-size: .9rem; display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
     .board { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 6px; }
@@ -227,11 +227,12 @@
     .number.is-empty { text-shadow: none; }
     .number .mistletoe-bells {
       display: block;
-      width: min(175px, 42%);
-      max-height: 165px;
+      width: min(242px, 59.4%);
+      max-height: 220px;
       object-fit: contain;
       filter: drop-shadow(0 7px 9px #734e282a);
     }
+    .draw-area:has(.number.is-empty) .actions { margin-top: 14px; }
     #draw {
       background:
         linear-gradient(180deg, #f86a73 0%, #d52b3c 26%, #aa172a 100%) padding-box,
